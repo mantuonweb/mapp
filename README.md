@@ -31,4 +31,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## todo
 
 https://zefoy.github.io/ngx-perfect-scrollbar/
+
+
 https://valor-software.com/ngx-bootstrap/#/
+
+https://medium.com/frontend-coach/self-or-optional-host-the-visual-guide-to-angular-di-decorators-73fbbb5c8658
+
