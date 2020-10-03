@@ -20,3 +20,4 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+// ng generate module customers --route customers --module app.module
