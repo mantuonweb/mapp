@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: 'customers', loadChildren: () => import('./pages/customers/customers.module').then(m => m.CustomersModule) },
   //ng generate module orders --route orders --module app.module //Whoa
   { path: 'orders', loadChildren: () => import('./pages/orders/orders.module').then(m => m.OrdersModule) },
+  { path: 'payment', loadChildren: () => import('./pages/payment/payment.module').then(m => m.PaymentModule) },
   { path: '**', redirectTo: '/home' }
   // { path: '**', component: PageNotFoundComponent }
 ];
