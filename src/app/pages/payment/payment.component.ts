@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 declare var StripeCheckout;
 // https://stripe.com/docs/js
+// https://medium.com/better-programming/payments-simplified-stripe-angular-express-4a88bf69f82e
 //https://stripe.com/docs/stripe-js/elements/payment-request-button
+// npm i stripe-angular
+// https://github.com/AckerApple/stripe-angular#readme
 //https://stripe.com/docs/payments/checkout/migration
 //https://stackoverflow.com/questions/57216887/how-to-integrate-latest-version-of-stripe-payment-gateway-server-checkout-in-a
 @Component({
