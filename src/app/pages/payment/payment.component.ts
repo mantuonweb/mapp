@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 declare var StripeCheckout;
+// https://www.npmjs.com/package/ngx-stripe
 // https://stripe.com/docs/js
 // https://medium.com/better-programming/payments-simplified-stripe-angular-express-4a88bf69f82e
 //https://stripe.com/docs/stripe-js/elements/payment-request-button
