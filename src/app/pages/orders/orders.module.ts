@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { OrdersRoutingModule } from './orders-routing.module';
 import { OrdersComponent } from './orders.component';
@@ -10,7 +11,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     SharedModule,
     FormsModule,
-    OrdersRoutingModule
+    OrdersRoutingModule,
+    HttpClientModule
   ]
 })
 export class OrdersModule { }

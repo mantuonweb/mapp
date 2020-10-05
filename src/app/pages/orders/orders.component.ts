@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 // import {loadStripe} from '@stripe/stripe-js';
 declare var Stripe;
@@ -12,17 +13,25 @@ export class OrdersComponent implements OnInit {
   stripe;
   card;
   errorMessage = "";
+  clientSecret ="";
   @ViewChild("cardElement") cardElement: ElementRef
-  constructor() {
-    this.stripe = Stripe(this.stripeKey);
+  constructor(private http: HttpClient) {
+    //http://localhost:4242/create-payment-intent
+    
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.load()
-    }, 0)
+    this.http.post('http://localhost:4242/create-payment-intent',{"items":[{"id":"photo-subscription"}],currency:'usd'}).subscribe((resp:any)=>{
+      this.stripeKey = resp.publishableKey;
+      this.clientSecret = resp.clientSecret;
+      setTimeout(() => {
+        this.load()
+      }, 0);
+    })
+
   }
   load() {
+    this.stripe = Stripe(this.stripeKey);
     // Create an instance of Elements.
     var elements = this.stripe.elements();
 
@@ -62,17 +71,53 @@ export class OrdersComponent implements OnInit {
   }
   onSubmit(event) {
     event.preventDefault();
-    console.log(event);
-    this.stripe.createToken(this.card).then((result) => {
+    // console.log(event);
+    // this.stripe.createToken(this.card).then((result) => {
+    //   if (result.error) {
+    //     this.errorMessage = result.error.message;
+    //   } else {
+    //     // Send the token to your server.
+    //     this.stripeTokenHandler(result.token);
+    //   }
+    // });
+    this.pay(this.stripe,this.card,this.clientSecret)
+  }
+  pay(stripe, card, clientSecret){
+    stripe
+    .confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: card
+      }
+    })
+    .then((result) =>{
       if (result.error) {
+        // Show error to your customer
+        // showError(result.error.message);
         this.errorMessage = result.error.message;
       } else {
-        // Send the token to your server.
-        this.stripeTokenHandler(result.token);
+        // The payment has been processed!
+        this.orderComplete(clientSecret);
       }
     });
   }
   stripeTokenHandler(token) {
     console.log(token);
+    this.pay(this.stripe,this.card,this.clientSecret);
+  }
+  orderComplete(clientSecret){
+    this.stripe.retrievePaymentIntent(clientSecret).then((result) =>{
+      // var paymentIntent = result.paymentIntent;
+      // var paymentIntentJson = JSON.stringify(paymentIntent, null, 2);
+  
+      // document.querySelector(".sr-payment-form").classList.add("hidden");
+      // document.querySelector("pre").textContent = paymentIntentJson;
+  
+      // document.querySelector(".sr-result").classList.remove("hidden");
+      // setTimeout(function() {
+      //   document.querySelector(".sr-result").classList.add("expand");
+      // }, 200);
+  
+      // changeLoadingState(false);
+    });
   }
 }
