@@ -37,3 +37,5 @@ https://valor-software.com/ngx-bootstrap/#/
 
 https://medium.com/frontend-coach/self-or-optional-host-the-visual-guide-to-angular-di-decorators-73fbbb5c8658
 
+https://stripe.com/docs/stripe-js
+
