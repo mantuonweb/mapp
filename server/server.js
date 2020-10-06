@@ -1,3 +1,4 @@
+//https://github.com/stripe-samples/accept-a-card-payment
 const express = require("express");
 var cors = require('cors')
 const app = express();
