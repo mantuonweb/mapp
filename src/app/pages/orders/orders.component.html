@@ -1,5 +1,5 @@
 <div class="form-details">
-    <form novalidate id="payment-form" (submit)="onSubmit($event)">
+    <form novalidate id="payment-form" [hidden]="paymentData" (submit)="onSubmit($event)">
         <div class="form-row">
             <label for="card-element">
                 Credit or debit card
@@ -16,4 +16,9 @@
     
         <button [disabled]="errorMessage" class="btn btn-default">Submit Payment</button>
     </form>
+    <div *ngIf="paymentData">
+        Payment Data:<br>
+        <span style="color:green">Payment Successfull</span><br>
+        {{paymentData|json}}
+    </div>
 </div>

@@ -14,6 +14,7 @@ export class OrdersComponent implements OnInit {
   card;
   errorMessage = "";
   clientSecret ="";
+  paymentData:any;
   @ViewChild("cardElement") cardElement: ElementRef
   constructor(private http: HttpClient) {
     //http://localhost:4242/create-payment-intent
@@ -110,8 +111,9 @@ export class OrdersComponent implements OnInit {
   }
   orderComplete(clientSecret){
     this.stripe.retrievePaymentIntent(clientSecret).then((result) =>{
+      this.paymentData = result;
       console.log(result);
-      alert("Completed");
+      // alert("Completed");
       // var paymentIntent = result.paymentIntent;
       // var paymentIntentJson = JSON.stringify(paymentIntent, null, 2);
   

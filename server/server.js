@@ -1,5 +1,6 @@
 //https://github.com/stripe-samples/accept-a-card-payment
 const express = require("express");
+const Stripe = require("stripe");
 var cors = require('cors')
 const app = express();
 const { resolve } = require("path");
@@ -8,8 +9,8 @@ const SECRET_KEY = "sk_test_51HYw38JstFBsrnbnhm5VFygxy5p8typ9Mwvi9099o1VRJASQCnN
 
 const PUBLISHABLE_KEY ="pk_test_51HYw38JstFBsrnbnVOkoWkvgntT8Bid13GNj1qIP4cvGZAvnfWgKHjeCYc0Y9HpZFL8d9Mi4AlzjBQ7HcsVnDWhi00Z4K7Q7Qr"
 // Replace if using a different env file or config
-const env = require("dotenv").config({ path: "./.env" });
-const stripe = require("stripe")(SECRET_KEY);
+// const env = require("dotenv").config({ path: "./.env" });
+const stripe = Stripe(SECRET_KEY);
 app.use(cors());
 // app.use(express.static(PATH));
 app.use(
