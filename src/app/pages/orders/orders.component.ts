@@ -17,6 +17,7 @@ export class OrdersComponent implements OnInit {
   @ViewChild("cardElement") cardElement: ElementRef
   constructor(private http: HttpClient) {
     //http://localhost:4242/create-payment-intent
+    //https://stripe.com/docs/india-exports
     
   }
 
@@ -88,7 +89,7 @@ export class OrdersComponent implements OnInit {
       payment_method: {
         card: card,
         billing_details: {
-          name: 'Jenny Rosen'
+          name: 'Jenny Rosen',
         }
       }
     })
@@ -109,6 +110,8 @@ export class OrdersComponent implements OnInit {
   }
   orderComplete(clientSecret){
     this.stripe.retrievePaymentIntent(clientSecret).then((result) =>{
+      console.log(result);
+      alert("Completed");
       // var paymentIntent = result.paymentIntent;
       // var paymentIntentJson = JSON.stringify(paymentIntent, null, 2);
   
