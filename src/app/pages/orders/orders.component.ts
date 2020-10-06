@@ -86,7 +86,10 @@ export class OrdersComponent implements OnInit {
     stripe
     .confirmCardPayment(clientSecret, {
       payment_method: {
-        card: card
+        card: card,
+        billing_details: {
+          name: 'Jenny Rosen'
+        }
       }
     })
     .then((result) =>{
