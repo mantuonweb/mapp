@@ -39,3 +39,4 @@ https://medium.com/frontend-coach/self-or-optional-host-the-visual-guide-to-angu
 
 https://stripe.com/docs/stripe-js
 
+https://stripe.com/docs/stripe-js/elements/payment-request-button
