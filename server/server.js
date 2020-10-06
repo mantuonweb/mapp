@@ -2,7 +2,7 @@ const express = require("express");
 var cors = require('cors')
 const app = express();
 const { resolve } = require("path");
-const PATH = "D:/2020/accept-a-card-payment-master/accept-a-card-payment-master/using-webhooks/client/web";
+// const PATH = "D:/2020/accept-a-card-payment-master/accept-a-card-payment-master/using-webhooks/client/web";
 const SECRET_KEY = "sk_test_51HYw38JstFBsrnbnhm5VFygxy5p8typ9Mwvi9099o1VRJASQCnNm95MKUQSyZVsSYbzfCVch6u9YcWTseAxG3AGY004JdgQeSw";
 
 const PUBLISHABLE_KEY ="pk_test_51HYw38JstFBsrnbnVOkoWkvgntT8Bid13GNj1qIP4cvGZAvnfWgKHjeCYc0Y9HpZFL8d9Mi4AlzjBQ7HcsVnDWhi00Z4K7Q7Qr"
@@ -10,7 +10,7 @@ const PUBLISHABLE_KEY ="pk_test_51HYw38JstFBsrnbnVOkoWkvgntT8Bid13GNj1qIP4cvGZAv
 const env = require("dotenv").config({ path: "./.env" });
 const stripe = require("stripe")(SECRET_KEY);
 app.use(cors());
-app.use(express.static(PATH));
+// app.use(express.static(PATH));
 app.use(
   express.json({
     // We need the raw body to verify webhook signatures.
@@ -23,11 +23,11 @@ app.use(
   })
 );
 
-app.get("/checkout", (req, res) => {
-  // Display checkout page
-  const path = resolve(PATH + "/index.html");
-  res.sendFile(path);
-});
+// app.get("/checkout", (req, res) => {
+//   // Display checkout page
+//   const path = resolve(PATH + "/index.html");
+//   res.sendFile(path);
+// });
 
 const calculateOrderAmount = items => {
   // Replace this constant with a calculation of the order's amount
