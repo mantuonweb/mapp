@@ -23,7 +23,7 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.post('http://localhost:4242/create-payment-intent',{"items":[{"id":"photo-subscription"}],currency:'usd'}).subscribe((resp:any)=>{
+    this.http.post('https://payexp.herokuapp.com/create-payment-intent',{"items":[{"id":"photo-subscription"}],currency:'usd'}).subscribe((resp:any)=>{
       this.stripeKey = resp.publishableKey;
       this.clientSecret = resp.clientSecret;
       setTimeout(() => {
